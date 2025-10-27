@@ -216,3 +216,61 @@ footer .socials {
     font-size: 2rem;
   }
 }
+/* === Pulsierender Glow für Buttons === */
+.btn {
+  position: relative;
+  overflow: hidden;
+  z-index: 1;
+}
+
+.btn::after {
+  content: "";
+  position: absolute;
+  top: -2px;
+  left: -2px;
+  width: calc(100% + 4px);
+  height: calc(100% + 4px);
+  background: linear-gradient(45deg, #00e1ff, #0097a7, #00acc1, #00bcd4);
+  background-size: 300% 300%;
+  border-radius: 25px;
+  z-index: -1;
+  animation: pulseGlow 4s linear infinite;
+  opacity: 0.5;
+}
+
+@keyframes pulseGlow {
+  0% { background-position: 0% 50%; opacity: 0.5; }
+  50% { background-position: 100% 50%; opacity: 1; }
+  100% { background-position: 0% 50%; opacity: 0.5; }
+}
+
+/* === Projektkarten mit leichtem Glow beim Hover === */
+.project-card {
+  transition: transform 0.3s, box-shadow 0.3s;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.2);
+}
+
+.project-card:hover {
+  transform: translateY(-8px) scale(1.03);
+  box-shadow: 0 0 25px rgba(0, 224, 255, 0.4);
+}
+
+/* === GitHub Icon im Footer mit Puls-Effekt === */
+.github-link img {
+  width: 32px;
+  height: 32px;
+  filter: invert(1);
+  transition: transform 0.3s, filter 0.3s;
+  animation: githubPulse 3s ease-in-out infinite;
+}
+
+.github-link img:hover {
+  transform: scale(1.15);
+  filter: drop-shadow(0 0 8px #00e1ff);
+}
+
+@keyframes githubPulse {
+  0%, 100% { transform: scale(1); opacity: 0.8; }
+  50% { transform: scale(1.1); opacity: 1; }
+}
+
