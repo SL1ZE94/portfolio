@@ -77,3 +77,24 @@ document.addEventListener("DOMContentLoaded", () => {
   }, { threshold: 0.6 });
   sections.forEach(s => spy.observe(s));
 });
+// === Sprachumschaltung ===
+const deBtn = document.getElementById("deBtn");
+const enBtn = document.getElementById("enBtn");
+const translatable = document.querySelectorAll(".tr");
+
+function switchLang(lang) {
+  translatable.forEach(el => {
+    const text = el.getAttribute(`data-${lang}`);
+    if (text) el.textContent = text;
+  });
+  if (lang === "de") {
+    deBtn.classList.add("active");
+    enBtn.classList.remove("active");
+  } else {
+    enBtn.classList.add("active");
+    deBtn.classList.remove("active");
+  }
+}
+
+deBtn.addEventListener("click", () => switchLang("de"));
+enBtn.addEventListener("click", () => switchLang("en"));
