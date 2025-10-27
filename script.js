@@ -72,4 +72,26 @@ window.addEventListener("scroll", () => {
 scrollBtn.addEventListener("click", () => {
   window.scrollTo({ top: 0, behavior: "smooth" });
 });
+// === Burger-Menü Funktion ===
+const menuToggle = document.getElementById("menu-toggle");
+const navLinks = document.getElementById("nav-links");
+
+menuToggle.addEventListener("click", () => {
+  navLinks.classList.toggle("show");
+
+  // Symbol wechseln (☰ ↔ ✖)
+  if (navLinks.classList.contains("show")) {
+    menuToggle.textContent = "✖";
+  } else {
+    menuToggle.textContent = "☰";
+  }
+});
+
+// Menü automatisch schließen, wenn man auf einen Link klickt
+navLinks.querySelectorAll("a").forEach(link => {
+  link.addEventListener("click", () => {
+    navLinks.classList.remove("show");
+    menuToggle.textContent = "☰";
+  });
+});
 
