@@ -4,9 +4,10 @@ html { scroll-behavior: smooth; }
 body {
   font-family: "Inter", system-ui, -apple-system, Roboto, sans-serif;
   background:
-    linear-gradient(rgba(5, 10, 15, 0.8), rgba(5, 10, 15, 0.95)),
-    url("https://images.unsplash.com/photo-1555949963-aa79dcee981c?auto=format&fit=crop&w=1920&q=80") center/cover no-repeat fixed;
-  color: #e6f7ff;
+    linear-gradient(rgba(3, 7, 10, 0.88), rgba(3, 7, 10, 0.93)),
+    url("https://images.unsplash.com/photo-1555949963-aa79dcee981c?auto=format&fit=crop&w=1920&q=80")
+      center/cover no-repeat fixed;
+  color: #eaf9ff;
   overflow-x: hidden;
   backdrop-filter: blur(1px);
 }
@@ -471,4 +472,8 @@ body {
   left: 41px;
   background: #fff;
   box-shadow: 0 0 10px rgba(255,255,255,0.4);
+}
+.hero h1,
+.section h2 {
+  text-shadow: 0 0 8px rgba(25, 225, 255, 0.4);
 }
