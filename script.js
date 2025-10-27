@@ -112,3 +112,26 @@ langSwitch.addEventListener("change", () => {
   // Text im Toggle aktualisieren
   toggleText.textContent = langSwitch.checked ? toggleText.getAttribute("data-on") : toggleText.getAttribute("data-off");
 });
+document.addEventListener("DOMContentLoaded", () => {
+  const langSwitch = document.getElementById("langSwitch");
+  const transEls = document.querySelectorAll(".tr");
+
+  function switchLang(lang) {
+    transEls.forEach(el => {
+      const text = el.getAttribute(`data-${lang}`);
+      if (text) el.textContent = text;
+    });
+  }
+
+  // Standard: Deutsch
+  switchLang("de");
+
+  // Wenn Schalter umgelegt wird → Sprache wechseln
+  langSwitch.addEventListener("change", () => {
+    if (langSwitch.checked) {
+      switchLang("en");
+    } else {
+      switchLang("de");
+    }
+  });
+});
