@@ -4,14 +4,35 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>Armin Catakovic – Webdesign & Frontend Development</title>
-  <meta name="description" content="Portfolio von Armin Catakovic – moderne, schnelle und professionelle Websites.">
+
+  <!-- ✅ SEO & META -->
+  <meta name="description" content="Professionelles Webdesign und Frontend Development von Armin Catakovic – moderne, schnelle und responsive Websites.">
+  <meta name="keywords" content="Webdesign, Frontend Development, HTML, CSS, JavaScript, Freelancer, Responsive, Portfolio, Armin Catakovic">
+  <meta name="author" content="Armin Catakovic">
+  <meta name="robots" content="index, follow">
+
+  <!-- ✅ Open Graph (für Google & Social Media) -->
+  <meta property="og:title" content="Armin Catakovic – Webdesign & Frontend Development">
+  <meta property="og:description" content="Professionelles Webdesign, Frontend Development & Responsive Design.">
+  <meta property="og:image" content="https://sl1ze94.github.io/portfolio/favicon.png">
+  <meta property="og:url" content="https://sl1ze94.github.io/portfolio/">
+  <meta name="theme-color" content="#0a0f12">
+
+  <!-- ✅ Favicon -->
+  <link rel="icon" type="image/png" href="favicon.png" />
+
   <link rel="stylesheet" href="style.css" />
 </head>
 <body>
 
-  <!-- NAVIGATION -->
+  <!-- HEADER -->
   <header class="navbar">
     <a href="#home" class="logo" id="logo">Armin<span>Web</span></a>
+
+    <div class="lang-switch">
+      <button id="deBtn" class="lang-btn active">DE</button>
+      <button id="enBtn" class="lang-btn">EN</button>
+    </div>
 
     <button class="menu-toggle" id="menu-toggle">☰</button>
 
@@ -28,29 +49,126 @@
 
   <!-- HERO -->
   <section id="home" class="hero reveal">
-    <h1>Ich entwickle <span class="typing"></span></h1>
-    <p>Professionelle, performante und ansprechende Websites – individuell, zuverlässig und modern gestaltet.</p>
-    <a href="#projects" class="btn cta">Meine Projekte ansehen</a>
+    <h1 class="tr" data-de="Ich entwickle" data-en="I build">Ich entwickle</h1>
+    <span class="typing"></span>
+    <p class="tr"
+      data-de="Professionelle, performante und ansprechende Websites – individuell, zuverlässig und modern gestaltet."
+      data-en="Professional, high-performance and engaging websites – tailored, reliable and modern.">
+      Professionelle, performante und ansprechende Websites – individuell, zuverlässig und modern gestaltet.
+    </p>
+    <a href="#projects" class="btn cta tr" data-de="Meine Projekte ansehen" data-en="View my projects">Meine Projekte ansehen</a>
   </section>
 
   <!-- ÜBER MICH -->
   <section id="about" class="section reveal">
-    <h2>Über mich</h2>
-    <p>
-      Mein Name ist <strong>Armin Catakovic</strong> und ich bin leidenschaftlicher <strong>Frontend-Entwickler</strong> mit Fokus auf moderne, 
-      klare und funktionale Weblösungen. Ich kombiniere ein gutes Auge für Design mit strukturiertem Denken, um digitale 
-      Erlebnisse zu schaffen, die technisch sauber und optisch überzeugend sind.
+    <h2 class="tr" data-de="Über mich" data-en="About me">Über mich</h2>
+    <p class="tr"
+      data-de="Mein Name ist Armin Catakovic und ich bin leidenschaftlicher Frontend-Entwickler mit Fokus auf moderne, klare und funktionale Weblösungen."
+      data-en="My name is Armin Catakovic, a passionate Frontend Developer focused on modern, clean, and functional web solutions.">
+      Mein Name ist Armin Catakovic und ich bin leidenschaftlicher Frontend-Entwickler mit Fokus auf moderne, klare und funktionale Weblösungen.
     </p>
-    <p>
-      Zu meinen Stärken gehören Zuverlässigkeit, Detailgenauigkeit und die Fähigkeit, mich schnell in neue Technologien einzuarbeiten. 
-      Ich lege Wert auf langfristige Zusammenarbeit, transparente Kommunikation und Ergebnisse, die überzeugen – auf Desktop und Mobilgeräten gleichermaßen.
+    <p class="tr"
+      data-de="Ich lege Wert auf Zuverlässigkeit, sauberen Code und digitale Erlebnisse, die auf jedem Gerät überzeugen."
+      data-en="I value reliability, clean code, and digital experiences that work beautifully on every device.">
+      Ich lege Wert auf Zuverlässigkeit, sauberen Code und digitale Erlebnisse, die auf jedem Gerät überzeugen.
     </p>
+
     <ul class="highlights">
-      <li>HTML5 • CSS3 • JavaScript (Vanilla)</li>
-      <li>Responsive & Mobile-first Design</li>
-      <li>GitHub Pages • Netlify Deployment</li>
-      <li>SEO & Performance Optimierung</li>
+      <li>HTML5 • CSS3 • JavaScript</li>
+      <li>Responsive Design • SEO</li>
+      <li>GitHub Pages • Netlify</li>
     </ul>
   </section>
 
-  <
+  <!-- PROJEKTE -->
+  <section id="projects" class="section reveal">
+    <h2 class="tr" data-de="Projekte" data-en="Projects">Projekte</h2>
+    <div class="project-grid">
+      <article class="project-card">
+        <h3>WebStudio Landing Page</h3>
+        <p>Modernes Design mit klarer Struktur, Animationen und schneller Performance.</p>
+        <a href="https://github.com/sl1ze94" class="btn small" target="_blank">GitHub</a>
+      </article>
+
+      <article class="project-card">
+        <h3>Portfolio Website</h3>
+        <p>Diese Website – mobiloptimiert, dunkel gestaltet, mit sanften Animationen und Burger-Menü.</p>
+        <a href="https://github.com/sl1ze94/portfolio" class="btn small" target="_blank">Repository</a>
+      </article>
+
+      <article class="project-card">
+        <h3>Responsive Business Page</h3>
+        <p>Eine Business-Webseite mit Dark Mode, Formular und flexibler Struktur.</p>
+        <a href="https://github.com/sl1ze94" class="btn small" target="_blank">GitHub</a>
+      </article>
+    </div>
+  </section>
+
+  <!-- KONTAKT -->
+  <section id="contact" class="section reveal">
+    <h2 class="tr" data-de="Kontakt" data-en="Contact">Kontakt</h2>
+    <p class="tr"
+      data-de="Du möchtest ein Projekt umsetzen oder über eine Zusammenarbeit sprechen? Schreib mir gern eine Nachricht."
+      data-en="Want to discuss a project or collaboration? Feel free to send me a message.">
+      Du möchtest ein Projekt umsetzen oder über eine Zusammenarbeit sprechen? Schreib mir gern eine Nachricht.
+    </p>
+
+    <form class="contact-form" onsubmit="event.preventDefault(); alert('Danke für deine Nachricht!');">
+      <input type="text" name="name" placeholder="Dein Name" required />
+      <input type="email" name="email" placeholder="Deine E-Mail" required />
+      <textarea name="message" placeholder="Deine Nachricht" rows="5" required></textarea>
+      <button type="submit" class="btn tr" data-de="Nachricht senden" data-en="Send message">Nachricht senden</button>
+    </form>
+  </section>
+
+  <!-- IMPRESSUM -->
+  <section id="impressum" class="section reveal">
+    <h2>Impressum</h2>
+    <p><strong>Angaben gemäß § 5 TMG:</strong></p>
+    <p>
+      Armin Catakovic<br>
+      Heitkämperstr. 4<br>
+      63322 Rödermark<br>
+      Deutschland
+    </p>
+    <p>
+      Telefon: 0176 70102834<br>
+      E-Mail: <a href="mailto:armin.nrv@gmail.com">armin.nrv@gmail.com</a>
+    </p>
+    <p><strong>Verantwortlich für den Inhalt:</strong><br>
+      Armin Catakovic, Rödermark
+    </p>
+  </section>
+
+  <!-- DATENSCHUTZ -->
+  <section id="datenschutz" class="section reveal">
+    <h2>Datenschutzerklärung</h2>
+    <p>
+      Diese Website verwendet keine Cookies und speichert keine personenbezogenen Daten.
+      Technische Serverdaten (z. B. IP-Adresse, Browser, Zugriffszeit) werden durch GitHub erfasst
+      und dienen ausschließlich der Bereitstellung des Angebots.
+    </p>
+    <p>
+      Bei einer Kontaktaufnahme werden deine Angaben ausschließlich zur Beantwortung verwendet
+      und nicht an Dritte weitergegeben.
+    </p>
+    <p>
+      Du hast das Recht auf Auskunft, Berichtigung oder Löschung deiner gespeicherten Daten.
+      Kontaktiere mich hierzu per E-Mail unter <a href="mailto:armin.nrv@gmail.com">armin.nrv@gmail.com</a>.
+    </p>
+  </section>
+
+  <!-- FOOTER -->
+  <footer class="footer">
+    <p>© 2025 Armin Catakovic – Webdesign & Frontend Development</p>
+    <div class="socials">
+      <a href="https://github.com/sl1ze94" target="_blank" class="github-link">
+        <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/github/github-original.svg" alt="GitHub">
+      </a>
+    </div>
+  </footer>
+
+  <button id="scrollTopBtn" title="Nach oben">↑</button>
+  <script src="script.js" defer></script>
+</body>
+</html>
