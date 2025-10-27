@@ -288,3 +288,56 @@ body {
   .hero h1 { font-size: 2.1rem; }
   .section { padding: 70px 18px; }
 }
+/* === Language Toggle Switch === */
+.lang-toggle {
+  display: inline-block;
+  vertical-align: middle;
+  margin-right: 14px;
+}
+.lang-toggle input {
+  display: none;
+}
+.toggle-label {
+  display: block;
+  width: 56px;
+  height: 28px;
+  background: rgba(255,255,255,0.12);
+  border-radius: 14px;
+  position: relative;
+  cursor: pointer;
+  transition: background .3s;
+}
+.toggle-label .toggle-inner {
+  display: block;
+  width: 100%;
+  height: 100%;
+  line-height: 28px;
+  text-align: center;
+  font-size: 0.9rem;
+  color: #e6f7ff;
+  transition: all .3s;
+}
+.toggle-label .toggle-switch {
+  display: block;
+  width: 24px;
+  height: 24px;
+  background: #0a0f12;
+  border-radius: 50%;
+  position: absolute;
+  top: 2px;
+  left: 2px;
+  box-shadow: 0 0 8px rgba(25,225,255,0.4);
+  transition: all .3s;
+}
+
+/* Checked (EN) */
+.lang-toggle input:checked + .toggle-label {
+  background: #19e1ff;
+}
+.lang-toggle input:checked + .toggle-label .toggle-inner {
+  color: #0a0f12;
+}
+.lang-toggle input:checked + .toggle-label .toggle-switch {
+  left: 30px;
+  background: #fff;
+}
