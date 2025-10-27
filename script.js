@@ -127,11 +127,13 @@ document.addEventListener("DOMContentLoaded", () => {
 
   // Switch Listener
   if (langSwitch) {
-    langSwitch.addEventListener("change", () => {
-      lang = langSwitch.checked ? "en" : "de";
-      localStorage.setItem("lang", lang);
-      applyTranslations(lang);
-    });
+    let lang = localStorage.getItem("lang") || "de";
+if (langSwitch) {
+  // rechts = EN, links = DE
+  langSwitch.checked = (lang === "en");
+}
+applyTranslations(lang);
+});
   }
 
   // Tippen starten (falls noch nicht gestartet)
