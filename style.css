@@ -3,10 +3,14 @@
 html { scroll-behavior: smooth; }
 body {
   font-family: "Inter", system-ui, -apple-system, Roboto, sans-serif;
-  background: radial-gradient(circle at top left, #0a0f12 0%, #050708 80%);
+  background:
+    linear-gradient(rgba(5, 10, 15, 0.8), rgba(5, 10, 15, 0.95)),
+    url("https://images.unsplash.com/photo-1555949963-aa79dcee981c?auto=format&fit=crop&w=1920&q=80") center/cover no-repeat fixed;
   color: #e6f7ff;
   overflow-x: hidden;
+  backdrop-filter: blur(1px);
 }
+
 
 /* === Navbar === */
 .navbar {
