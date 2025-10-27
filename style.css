@@ -273,4 +273,35 @@ footer .socials {
   0%, 100% { transform: scale(1); opacity: 0.8; }
   50% { transform: scale(1.1); opacity: 1; }
 }
+/* === Scroll to Top Button === */
+#scrollTopBtn {
+  position: fixed;
+  bottom: 25px;
+  right: 25px;
+  background: linear-gradient(45deg, #00e1ff, #00acc1);
+  color: white;
+  border: none;
+  border-radius: 50%;
+  width: 45px;
+  height: 45px;
+  font-size: 1.5rem;
+  cursor: pointer;
+  display: none;
+  justify-content: center;
+  align-items: center;
+  box-shadow: 0 0 15px rgba(0, 225, 255, 0.4);
+  animation: pulseUp 3s infinite ease-in-out;
+  transition: transform 0.3s, background 0.3s;
+  z-index: 100;
+}
+
+#scrollTopBtn:hover {
+  transform: scale(1.15);
+  background: linear-gradient(45deg, #00acc1, #007c91);
+}
+
+@keyframes pulseUp {
+  0%, 100% { box-shadow: 0 0 10px rgba(0, 225, 255, 0.4); }
+  50% { box-shadow: 0 0 25px rgba(0, 225, 255, 0.8); }
+}
 
