@@ -3,105 +3,54 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>ArminWeb – Webdesign & Frontend Development</title>
+  <title>Armin Catakovic – Webdesign & Frontend Development</title>
+  <meta name="description" content="Portfolio von Armin Catakovic – moderne, schnelle und professionelle Websites.">
   <link rel="stylesheet" href="style.css" />
-  <meta name="description" content="Portfolio von Armin Catakovic – moderne, schnelle, responsive Websites.">
 </head>
 <body>
 
-  <!-- NAVBAR -->
-  <header class="navbar" role="navigation" aria-label="Hauptnavigation">
-    <a href="#home" class="logo" id="logo" aria-label="Zur Startseite">Armin<span>Web</span></a>
+  <!-- NAVIGATION -->
+  <header class="navbar">
+    <a href="#home" class="logo" id="logo">Armin<span>Web</span></a>
 
-    <button class="menu-toggle" id="menu-toggle" aria-label="Menü öffnen" aria-expanded="false" aria-controls="nav-links">☰</button>
+    <button class="menu-toggle" id="menu-toggle">☰</button>
 
     <nav>
       <ul class="nav-links" id="nav-links">
         <li><a href="#about">Über mich</a></li>
         <li><a href="#projects">Projekte</a></li>
         <li><a href="#contact">Kontakt</a></li>
+        <li><a href="#impressum">Impressum</a></li>
+        <li><a href="#datenschutz">Datenschutz</a></li>
       </ul>
     </nav>
   </header>
 
   <!-- HERO -->
-  <section id="home" class="hero section reveal" aria-label="Start">
-    <h1>Ich baue <span class="typing"></span></h1>
-    <p>Moderne, schnelle und responsive Websites – mit Fokus auf klare UX, starke Performance und sauberen Code.</p>
-    <a href="#projects" class="btn cta">Projekte ansehen</a>
+  <section id="home" class="hero reveal">
+    <h1>Ich entwickle <span class="typing"></span></h1>
+    <p>Professionelle, performante und ansprechende Websites – individuell, zuverlässig und modern gestaltet.</p>
+    <a href="#projects" class="btn cta">Meine Projekte ansehen</a>
   </section>
 
-  <!-- ABOUT -->
-  <section id="about" class="about section reveal" aria-label="Über mich">
+  <!-- ÜBER MICH -->
+  <section id="about" class="section reveal">
     <h2>Über mich</h2>
-    <p>Ich bin <strong>Armin Catakovic</strong>, Frontend-Entwickler und Freelancer. 
-       Ich kombiniere <em>Design</em>, <em>Usability</em> und <em>Performance</em>, damit Websites auf jedem Gerät überzeugen.
-       Tagsüber arbeite ich Vollzeit, abends liefere ich professionelle Web-Projekte – zuverlässig & termintreu.</p>
+    <p>
+      Mein Name ist <strong>Armin Catakovic</strong> und ich bin leidenschaftlicher <strong>Frontend-Entwickler</strong> mit Fokus auf moderne, 
+      klare und funktionale Weblösungen. Ich kombiniere ein gutes Auge für Design mit strukturiertem Denken, um digitale 
+      Erlebnisse zu schaffen, die technisch sauber und optisch überzeugend sind.
+    </p>
+    <p>
+      Zu meinen Stärken gehören Zuverlässigkeit, Detailgenauigkeit und die Fähigkeit, mich schnell in neue Technologien einzuarbeiten. 
+      Ich lege Wert auf langfristige Zusammenarbeit, transparente Kommunikation und Ergebnisse, die überzeugen – auf Desktop und Mobilgeräten gleichermaßen.
+    </p>
     <ul class="highlights">
-      <li>HTML • CSS • JavaScript (Vanilla)</li>
-      <li>Responsive Design, SEO-Basics, Zugänglichkeit</li>
-      <li>Deployment mit GitHub Pages/Netlify</li>
+      <li>HTML5 • CSS3 • JavaScript (Vanilla)</li>
+      <li>Responsive & Mobile-first Design</li>
+      <li>GitHub Pages • Netlify Deployment</li>
+      <li>SEO & Performance Optimierung</li>
     </ul>
   </section>
 
-  <!-- PROJECTS -->
-  <section id="projects" class="projects section reveal" aria-label="Projekte">
-    <h2>Projekte</h2>
-
-    <div class="project-grid">
-      <!-- Passe die href-Links bei Bedarf an konkrete Repos an -->
-      <article class="project-card">
-        <h3>WebStudio Landing Page</h3>
-        <p>Moderne Agentur-Landingpage mit Animationen, mobiloptimiert.</p>
-        <a class="btn small"
-           href="https://github.com/sl1ze94?tab=repositories"
-           target="_blank" rel="noopener">Zum GitHub</a>
-      </article>
-
-      <article class="project-card">
-        <h3>Portfolio Website (diese)</h3>
-        <p>Dark-Theme, Burger-Menü, Active-Nav, Reveal, Puls-Glow.</p>
-        <a class="btn small"
-           href="https://github.com/sl1ze94/portfolio"
-           target="_blank" rel="noopener">Repo öffnen</a>
-      </article>
-
-      <article class="project-card">
-        <h3>PflegePlus Beispielseite</h3>
-        <p>Barrierearm, klar strukturiert, sehr schnelle Ladezeiten.</p>
-        <a class="btn small"
-           href="https://github.com/sl1ze94?tab=repositories"
-           target="_blank" rel="noopener">Zum GitHub</a>
-      </article>
-    </div>
-  </section>
-
-  <!-- CONTACT -->
-  <section id="contact" class="contact section reveal" aria-label="Kontakt">
-    <h2>Kontakt</h2>
-    <p>Interesse an einer Website oder Fragen? Schreib mir gern.</p>
-    <form class="contact-form" onsubmit="event.preventDefault(); alert('Danke! Ich melde mich bald.');">
-      <input type="text" name="name" placeholder="Ihr Name" required />
-      <input type="email" name="email" placeholder="Ihre E-Mail" required />
-      <textarea name="message" placeholder="Ihre Nachricht" rows="5" required></textarea>
-      <button type="submit" class="btn">Nachricht senden</button>
-    </form>
-  </section>
-
-  <!-- FOOTER -->
-  <footer class="footer">
-    <p>© 2025 Armin Catakovic – Webdesign & Frontend Development</p>
-    <div class="socials">
-      <!-- GitHub Icon via CDN (kein Download nötig) -->
-      <a href="https://github.com/sl1ze94" target="_blank" rel="noopener" class="github-link" aria-label="Mein GitHub Profil">
-        <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/github/github-original.svg" alt="GitHub" />
-      </a>
-    </div>
-  </footer>
-
-  <!-- Scroll to top -->
-  <button id="scrollTopBtn" title="Nach oben" aria-label="Nach oben">↑</button>
-
-  <script src="script.js" defer></script>
-</body>
-</html>
+  <
