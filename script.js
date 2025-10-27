@@ -1,73 +1,65 @@
+// ==== Helpers ================================================================
+function $(sel, root = document) { return root.querySelector(sel); }
+function $all(sel, root = document) { return Array.from(root.querySelectorAll(sel)); }
+
+// ==== Burger-Menü ============================================================
 document.addEventListener("DOMContentLoaded", () => {
-  // === Burger-Menü ===
-  const menuToggle = document.getElementById("menu-toggle");
-  const navLinks = document.getElementById("nav-links");
+  const menuToggle = $("#menu-toggle");
+  const navLinks = $("#nav-links");
 
-  menuToggle.addEventListener("click", () => {
-    navLinks.classList.toggle("show");
-    menuToggle.textContent = navLinks.classList.contains("show") ? "✖" : "☰";
-  });
-
-  navLinks.querySelectorAll("a").forEach(link => {
-    link.addEventListener("click", () => {
-      navLinks.classList.remove("show");
-      menuToggle.textContent = "☰";
+  if (menuToggle && navLinks) {
+    menuToggle.addEventListener("click", () => {
+      navLinks.classList.toggle("show");
+      menuToggle.textContent = navLinks.classList.contains("show") ? "✖" : "☰";
     });
-  });
-
-  // === Logo → Scroll to Home ===
-  const logo = document.getElementById("logo");
-  logo.addEventListener("click", (e) => {
-    e.preventDefault();
-    document.getElementById("home").scrollIntoView({ behavior: "smooth" });
-  });
-
-  // === Typing Effekt ===
-  const words = ["moderne Websites", "klare Interfaces", "responsives Design"];
-  const typingEl = document.querySelector(".typing");
-  let i = 0, j = 0, deleting = false;
-  function typing() {
-    if (!deleting && j < words[i].length) {
-      typingEl.textContent += words[i][j++];
-    } else if (deleting && j > 0) {
-      typingEl.textContent = typingEl.textContent.slice(0, --j);
-    } else if (!deleting && j === words[i].length) {
-      deleting = true;
-      setTimeout(typing, 1200);
-      return;
-    } else if (deleting && j === 0) {
-      deleting = false;
-      i = (i + 1) % words.length;
-    }
-    setTimeout(typing, deleting ? 60 : 100);
+    // Links klicken -> Menü zu
+    $all("a", navLinks).forEach(a => {
+      a.addEventListener("click", () => {
+        navLinks.classList.remove("show");
+        menuToggle.textContent = "☰";
+      });
+    });
   }
-  typing();
 
-  // === Scroll-Reveal ===
-  const revealEls = document.querySelectorAll(".reveal");
-  const observer = new IntersectionObserver((entries) => {
+  // ==== Logo → Home ==========================================================
+  const logo = $("#logo");
+  if (logo) {
+    logo.addEventListener("click", (e) => {
+      e.preventDefault();
+      const home = $("#home");
+      if (home) home.scrollIntoView({ behavior: "smooth", block: "start" });
+      navLinks?.classList.remove("show");
+      if (menuToggle) menuToggle.textContent = "☰";
+    });
+  }
+
+  // ==== Scroll-to-Top ========================================================
+  const scrollBtn = $("#scrollTopBtn");
+  if (scrollBtn) {
+    window.addEventListener("scroll", () => {
+      scrollBtn.style.display = window.scrollY > 400 ? "flex" : "none";
+    });
+    scrollBtn.addEventListener("click", () =>
+      window.scrollTo({ top: 0, behavior: "smooth" })
+    );
+  }
+
+  // ==== Scroll-Reveal ========================================================
+  const revealEls = $all(".reveal");
+  const revObs = new IntersectionObserver((entries) => {
     entries.forEach(entry => {
       if (entry.isIntersecting) {
         entry.target.classList.add("active");
-        observer.unobserve(entry.target);
+        revObs.unobserve(entry.target);
       }
     });
   }, { threshold: 0.15 });
-  revealEls.forEach(el => observer.observe(el));
+  revealEls.forEach(el => revObs.observe(el));
 
-  // === Scroll-to-Top ===
-  const scrollBtn = document.getElementById("scrollTopBtn");
-  window.addEventListener("scroll", () => {
-    scrollBtn.style.display = window.scrollY > 400 ? "flex" : "none";
-  });
-  scrollBtn.addEventListener("click", () => {
-    window.scrollTo({ top: 0, behavior: "smooth" });
-  });
-
-  // === Active Nav Highlight ===
-  const sections = document.querySelectorAll("section");
-  const navAnchors = document.querySelectorAll(".nav-links a");
-  const spy = new IntersectionObserver((entries) => {
+  // ==== Active Nav on Scroll =================================================
+  const sections = $all("section");
+  const navAnchors = $all(".nav-links a");
+  const spyObs = new IntersectionObserver((entries) => {
     entries.forEach(entry => {
       if (entry.isIntersecting) {
         const id = entry.target.getAttribute("id");
@@ -75,63 +67,73 @@ document.addEventListener("DOMContentLoaded", () => {
       }
     });
   }, { threshold: 0.6 });
-  sections.forEach(s => spy.observe(s));
-});
-// === Sprachumschaltung ===
-const deBtn = document.getElementById("deBtn");
-const enBtn = document.getElementById("enBtn");
-const translatable = document.querySelectorAll(".tr");
+  sections.forEach(s => spyObs.observe(s));
 
-function switchLang(lang) {
-  translatable.forEach(el => {
-    const text = el.getAttribute(`data-${lang}`);
-    if (text) el.textContent = text;
-  });
-  if (lang === "de") {
-    deBtn.classList.add("active");
-    enBtn.classList.remove("active");
-  } else {
-    enBtn.classList.add("active");
-    deBtn.classList.remove("active");
+  // ==== Typing Effekt (mit Sprache) =========================================
+  const typingEl = $(".typing");
+  let typingTimer = null;
+  let wordsDE = ["moderne Websites", "klare Interfaces", "responsives Design"];
+  let wordsEN = ["modern websites", "clean interfaces", "responsive design"];
+  let currentWords = wordsDE;
+  let wi = 0, ci = 0, deleting = false;
+
+  function startTyping() {
+    if (!typingEl) return;
+    // Reset
+    clearTimeout(typingTimer);
+    typingEl.textContent = "";
+    wi = 0; ci = 0; deleting = false;
+    loopTyping();
   }
-}
 
-deBtn.addEventListener("click", () => switchLang("de"));
-enBtn.addEventListener("click", () => switchLang("en"));
-// === Language Toggle Switch Function ===
-const langSwitch = document.getElementById("langSwitch");
-const transEls = document.querySelectorAll(".tr");
-const toggleText = document.querySelector(".toggle-text");
+  function loopTyping() {
+    const word = currentWords[wi];
+    if (!deleting && ci < word.length) {
+      typingEl.textContent += word[ci++];
+    } else if (!deleting && ci === word.length) {
+      deleting = true;
+      typingTimer = setTimeout(loopTyping, 1200);
+      return;
+    } else if (deleting && ci > 0) {
+      typingEl.textContent = word.slice(0, --ci);
+    } else {
+      deleting = false;
+      wi = (wi + 1) % currentWords.length;
+    }
+    typingTimer = setTimeout(loopTyping, deleting ? 50 : 100);
+  }
 
-langSwitch.addEventListener("change", () => {
-  const lang = langSwitch.checked ? "en" : "de";
-  transEls.forEach(el => {
-    const text = el.getAttribute(`data-${lang}`);
-    if (text) el.textContent = text;
-  });
-  // Text im Toggle aktualisieren
-  toggleText.textContent = langSwitch.checked ? toggleText.getAttribute("data-on") : toggleText.getAttribute("data-off");
-});
-document.addEventListener("DOMContentLoaded", () => {
-  const langSwitch = document.getElementById("langSwitch");
-  const transEls = document.querySelectorAll(".tr");
+  // ==== Sprachumschaltung ====================================================
+  const langSwitch = $("#langSwitch");
+  const transEls = $all(".tr");
 
-  function switchLang(lang) {
+  function applyTranslations(lang) {
     transEls.forEach(el => {
       const text = el.getAttribute(`data-${lang}`);
-      if (text) el.textContent = text;
+      if (text != null) el.textContent = text;
+    });
+    // Typing-Wortliste wechseln und Effekt neu starten
+    currentWords = (lang === "en") ? wordsEN : wordsDE;
+    startTyping();
+    // Navi schließen auf Handy
+    navLinks?.classList.remove("show");
+    if (menuToggle) menuToggle.textContent = "☰";
+  }
+
+  // Initial: Sprache aus localStorage oder 'de'
+  let lang = localStorage.getItem("lang") || "de";
+  if (langSwitch) langSwitch.checked = (lang === "en");
+  applyTranslations(lang);
+
+  // Switch Listener
+  if (langSwitch) {
+    langSwitch.addEventListener("change", () => {
+      lang = langSwitch.checked ? "en" : "de";
+      localStorage.setItem("lang", lang);
+      applyTranslations(lang);
     });
   }
 
-  // Standard: Deutsch
-  switchLang("de");
-
-  // Wenn Schalter umgelegt wird → Sprache wechseln
-  langSwitch.addEventListener("change", () => {
-    if (langSwitch.checked) {
-      switchLang("en");
-    } else {
-      switchLang("de");
-    }
-  });
+  // Tippen starten (falls noch nicht gestartet)
+  startTyping();
 });
