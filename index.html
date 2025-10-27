@@ -29,10 +29,15 @@
   <header class="navbar">
     <a href="#home" class="logo" id="logo">Armin<span>Web</span></a>
 
-    <div class="lang-switch">
-      <button id="deBtn" class="lang-btn active">DE</button>
-      <button id="enBtn" class="lang-btn">EN</button>
-    </div>
+    <!-- Sprach-Umschalter -->
+<div class="lang-toggle">
+  <input type="checkbox" id="langSwitch" />
+  <label for="langSwitch" class="toggle-label">
+    <span class="toggle-inner" data-yes="EN" data-no="DE"></span>
+    <span class="toggle-switch"></span>
+  </label>
+</div>
+
 
     <button class="menu-toggle" id="menu-toggle">☰</button>
 
