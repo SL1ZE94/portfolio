@@ -398,3 +398,63 @@ body {
   left: 34px;  /* passt je nach Breite */
   background: #fff;
 }
+/* === Language Switch (DE/EN) === */
+.lang-toggle {
+  position: relative;
+  display: inline-block;
+  width: 70px;
+  height: 32px;
+  margin-right: 14px;
+}
+.lang-toggle input {
+  display: none;
+}
+.toggle-label {
+  position: relative;
+  display: block;
+  width: 100%;
+  height: 100%;
+  background: rgba(255,255,255,0.15);
+  border-radius: 16px;
+  cursor: pointer;
+  transition: background 0.3s ease;
+}
+.toggle-label:hover {
+  background: rgba(255,255,255,0.25);
+}
+.lang-left, .lang-right {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  font-size: 0.8rem;
+  font-weight: 600;
+  color: #cdefff;
+  user-select: none;
+}
+.lang-left {
+  left: 8px;
+}
+.lang-right {
+  right: 8px;
+}
+.toggle-switch {
+  position: absolute;
+  top: 3px;
+  left: 3px;
+  width: 26px;
+  height: 26px;
+  background: #19e1ff;
+  border-radius: 50%;
+  box-shadow: 0 0 10px rgba(25,225,255,0.5);
+  transition: all 0.3s ease;
+}
+
+/* Aktiv (EN) */
+.lang-toggle input:checked + .toggle-label {
+  background: rgba(25,225,255,0.25);
+}
+.lang-toggle input:checked + .toggle-label .toggle-switch {
+  left: 41px;
+  background: #fff;
+  box-shadow: 0 0 10px rgba(255,255,255,0.4);
+}
