@@ -1,141 +1,119 @@
-// ==== Helpers ================================================================
-function $(sel, root = document) { return root.querySelector(sel); }
-function $all(sel, root = document) { return Array.from(root.querySelectorAll(sel)); }
-
-// ==== Burger-Menü ============================================================
+// === Sprachumschaltung ===
 document.addEventListener("DOMContentLoaded", () => {
-  const menuToggle = $("#menu-toggle");
-  const navLinks = $("#nav-links");
-
-  if (menuToggle && navLinks) {
-    menuToggle.addEventListener("click", () => {
-      navLinks.classList.toggle("show");
-      menuToggle.textContent = navLinks.classList.contains("show") ? "✖" : "☰";
-    });
-    // Links klicken -> Menü zu
-    $all("a", navLinks).forEach(a => {
-      a.addEventListener("click", () => {
-        navLinks.classList.remove("show");
-        menuToggle.textContent = "☰";
-      });
-    });
-  }
-
-  // ==== Logo → Home ==========================================================
-  const logo = $("#logo");
-  if (logo) {
-    logo.addEventListener("click", (e) => {
-      e.preventDefault();
-      const home = $("#home");
-      if (home) home.scrollIntoView({ behavior: "smooth", block: "start" });
-      navLinks?.classList.remove("show");
-      if (menuToggle) menuToggle.textContent = "☰";
-    });
-  }
-
-  // ==== Scroll-to-Top ========================================================
-  const scrollBtn = $("#scrollTopBtn");
-  if (scrollBtn) {
-    window.addEventListener("scroll", () => {
-      scrollBtn.style.display = window.scrollY > 400 ? "flex" : "none";
-    });
-    scrollBtn.addEventListener("click", () =>
-      window.scrollTo({ top: 0, behavior: "smooth" })
-    );
-  }
-
-  // ==== Scroll-Reveal ========================================================
-  const revealEls = $all(".reveal");
-  const revObs = new IntersectionObserver((entries) => {
-    entries.forEach(entry => {
-      if (entry.isIntersecting) {
-        entry.target.classList.add("active");
-        revObs.unobserve(entry.target);
-      }
-    });
-  }, { threshold: 0.15 });
-  revealEls.forEach(el => revObs.observe(el));
-
-  // ==== Active Nav on Scroll =================================================
-  const sections = $all("section");
-  const navAnchors = $all(".nav-links a");
-  const spyObs = new IntersectionObserver((entries) => {
-    entries.forEach(entry => {
-      if (entry.isIntersecting) {
-        const id = entry.target.getAttribute("id");
-        navAnchors.forEach(a => a.classList.toggle("active", a.getAttribute("href") === `#${id}`));
-      }
-    });
-  }, { threshold: 0.6 });
-  sections.forEach(s => spyObs.observe(s));
-
-  // ==== Typing Effekt (mit Sprache) =========================================
-  const typingEl = $(".typing");
-  let typingTimer = null;
-  let wordsDE = ["moderne Websites", "klare Interfaces", "responsives Design"];
-  let wordsEN = ["modern websites", "clean interfaces", "responsive design"];
-  let currentWords = wordsDE;
-  let wi = 0, ci = 0, deleting = false;
-
-  function startTyping() {
-    if (!typingEl) return;
-    // Reset
-    clearTimeout(typingTimer);
-    typingEl.textContent = "";
-    wi = 0; ci = 0; deleting = false;
-    loopTyping();
-  }
-
-  function loopTyping() {
-    const word = currentWords[wi];
-    if (!deleting && ci < word.length) {
-      typingEl.textContent += word[ci++];
-    } else if (!deleting && ci === word.length) {
-      deleting = true;
-      typingTimer = setTimeout(loopTyping, 1200);
-      return;
-    } else if (deleting && ci > 0) {
-      typingEl.textContent = word.slice(0, --ci);
-    } else {
-      deleting = false;
-      wi = (wi + 1) % currentWords.length;
-    }
-    typingTimer = setTimeout(loopTyping, deleting ? 50 : 100);
-  }
-
-  // ==== Sprachumschaltung ====================================================
-  const langSwitch = $("#langSwitch");
-  const transEls = $all(".tr");
+  const langSwitch = document.getElementById("langSwitch");
+  const transEls = document.querySelectorAll(".tr");
 
   function applyTranslations(lang) {
     transEls.forEach(el => {
       const text = el.getAttribute(`data-${lang}`);
-      if (text != null) el.textContent = text;
+      if (text) el.textContent = text;
     });
-    // Typing-Wortliste wechseln und Effekt neu starten
-    currentWords = (lang === "en") ? wordsEN : wordsDE;
-    startTyping();
-    // Navi schließen auf Handy
-    navLinks?.classList.remove("show");
-    if (menuToggle) menuToggle.textContent = "☰";
   }
 
-  // Initial: Sprache aus localStorage oder 'de'
+  // Sprache aus localStorage laden oder Standard DE
   let lang = localStorage.getItem("lang") || "de";
-  if (langSwitch) langSwitch.checked = (lang === "en");
+  if (langSwitch) {
+    langSwitch.checked = (lang === "en");
+  }
   applyTranslations(lang);
 
-  // Switch Listener
+  // Umschalten
   if (langSwitch) {
-    let lang = localStorage.getItem("lang") || "de";
-if (langSwitch) {
-  // rechts = EN, links = DE
-  langSwitch.checked = (lang === "en");
-}
-applyTranslations(lang);
-});
+    langSwitch.addEventListener("change", () => {
+      const langNow = langSwitch.checked ? "en" : "de";
+      localStorage.setItem("lang", langNow);
+      applyTranslations(langNow);
+    });
   }
 
-  // Tippen starten (falls noch nicht gestartet)
-  startTyping();
+  // === Burger Menü ===
+  const menuToggle = document.getElementById("menu-toggle");
+  const navLinks = document.getElementById("nav-links");
+
+  if (menuToggle && navLinks) {
+    menuToggle.addEventListener("click", () => {
+      navLinks.classList.toggle("active");
+    });
+
+    // Menü schließt sich, wenn man Link klickt
+    navLinks.querySelectorAll("a").forEach(link => {
+      link.addEventListener("click", () => {
+        navLinks.classList.remove("active");
+      });
+    });
+  }
+
+  // === Scroll-To-Top Button ===
+  const scrollTopBtn = document.getElementById("scrollTopBtn");
+
+  window.addEventListener("scroll", () => {
+    if (window.scrollY > 400) {
+      scrollTopBtn.style.display = "block";
+    } else {
+      scrollTopBtn.style.display = "none";
+    }
+  });
+
+  if (scrollTopBtn) {
+    scrollTopBtn.addEventListener("click", () => {
+      window.scrollTo({ top: 0, behavior: "smooth" });
+    });
+  }
+
+  // === Scroll Reveal ===
+  const revealElements = document.querySelectorAll(".reveal");
+
+  function revealOnScroll() {
+    const windowHeight = window.innerHeight;
+    revealElements.forEach(el => {
+      const elementTop = el.getBoundingClientRect().top;
+      if (elementTop < windowHeight - 100) {
+        el.classList.add("active");
+      }
+    });
+  }
+  window.addEventListener("scroll", revealOnScroll);
+  revealOnScroll();
+
+  // === Logo-Click → zurück zum Start ===
+  const logo = document.getElementById("logo");
+  if (logo) {
+    logo.addEventListener("click", e => {
+      e.preventDefault();
+      window.scrollTo({ top: 0, behavior: "smooth" });
+      if (navLinks) navLinks.classList.remove("active");
+    });
+  }
+
+  // === Typing Effekt ===
+  const typing = document.querySelector(".typing");
+  if (typing) {
+    const words = ["Websites", "Landing Pages", "Frontend Designs"];
+    let wordIndex = 0;
+    let charIndex = 0;
+    let currentWord = "";
+    let deleting = false;
+
+    function typeEffect() {
+      currentWord = words[wordIndex];
+      if (!deleting) {
+        typing.textContent = currentWord.substring(0, charIndex + 1);
+        charIndex++;
+        if (charIndex === currentWord.length) {
+          deleting = true;
+          setTimeout(typeEffect, 1200);
+          return;
+        }
+      } else {
+        typing.textContent = currentWord.substring(0, charIndex - 1);
+        charIndex--;
+        if (charIndex === 0) {
+          deleting = false;
+          wordIndex = (wordIndex + 1) % words.length;
+        }
+      }
+      setTimeout(typeEffect, deleting ? 70 : 120);
+    }
+    typeEffect();
+  }
 });
