@@ -101,6 +101,7 @@ enBtn.addEventListener("click", () => switchLang("en"));
 // === Language Toggle Switch Function ===
 const langSwitch = document.getElementById("langSwitch");
 const transEls = document.querySelectorAll(".tr");
+const toggleText = document.querySelector(".toggle-text");
 
 langSwitch.addEventListener("change", () => {
   const lang = langSwitch.checked ? "en" : "de";
@@ -108,4 +109,6 @@ langSwitch.addEventListener("change", () => {
     const text = el.getAttribute(`data-${lang}`);
     if (text) el.textContent = text;
   });
+  // Text im Toggle aktualisieren
+  toggleText.textContent = langSwitch.checked ? toggleText.getAttribute("data-on") : toggleText.getAttribute("data-off");
 });
