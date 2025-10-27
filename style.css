@@ -341,3 +341,60 @@ body {
   left: 30px;
   background: #fff;
 }
+.lang-toggle {
+  display: inline-block;
+  vertical-align: middle;
+  margin-right: 14px;
+}
+.lang-toggle input {
+  display: none;
+}
+.toggle-label {
+  display: block;
+  width: 60px;
+  height: 28px;
+  background: rgba(255,255,255,0.12);
+  border-radius: 14px;
+  position: relative;
+  cursor: pointer;
+  transition: background 0.3s ease;
+}
+.toggle-label .toggle-text {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  line-height: 28px;
+  text-align: center;
+  font-size: 0.9rem;
+  color: #e6f7ff;
+  transition: color 0.3s ease;
+}
+.toggle-label .toggle-switch {
+  position: absolute;
+  top: 2px;
+  left: 2px;
+  width: 24px;
+  height: 24px;
+  background: #0a0f12;
+  border-radius: 50%;
+  box-shadow: 0 0 8px rgba(25,225,255,0.4);
+  transition: all 0.3s ease;
+}
+
+/* Zustand „ON“ (EN) */
+.lang-toggle input:checked + .toggle-label {
+  background: #19e1ff;
+}
+.lang-toggle input:checked + .toggle-label .toggle-text {
+  color: #0a0f12;
+}
+.lang-toggle input:not(:checked) + .toggle-label {
+  background: rgba(255,255,255,0.12);
+}
+.lang-toggle input:not(:checked) + .toggle-label .toggle-text {
+  color: #e6f7ff;
+}
+.lang-toggle input:checked + .toggle-label .toggle-switch {
+  left: 34px;  /* passt je nach Breite */
+  background: #fff;
+}
