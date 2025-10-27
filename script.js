@@ -98,3 +98,14 @@ function switchLang(lang) {
 
 deBtn.addEventListener("click", () => switchLang("de"));
 enBtn.addEventListener("click", () => switchLang("en"));
+// === Language Toggle Switch Function ===
+const langSwitch = document.getElementById("langSwitch");
+const transEls = document.querySelectorAll(".tr");
+
+langSwitch.addEventListener("change", () => {
+  const lang = langSwitch.checked ? "en" : "de";
+  transEls.forEach(el => {
+    const text = el.getAttribute(`data-${lang}`);
+    if (text) el.textContent = text;
+  });
+});
