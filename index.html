@@ -131,12 +131,15 @@
        Du möchtest ein Projekt umsetzen oder über eine Zusammenarbeit sprechen? Schreib mir gern eine Nachricht.
     </p>
 
-    <form class="contact-form" onsubmit="event.preventDefault(); alert('Danke für deine Nachricht!');">
-      <input type="text" name="name" placeholder="Dein Name" required />
-      <input type="email" name="email" placeholder="Deine E-Mail" required />
-      <textarea name="message" placeholder="Deine Nachricht" rows="5" required></textarea>
-      <button type="submit" class="btn tr" data-de="Nachricht senden" data-en="Send message">Nachricht senden</button>
+    <form id="contact-form" class="contact-form">
+        <input type="text" name="from_name" placeholder="Dein Name" required />
+        <input type="email" name="reply_to" placeholder="Deine E-Mail" required />
+        <textarea name="message" placeholder="Deine Nachricht" rows="5" required></textarea>
+        <button type="submit" class="btn tr" data-de="Nachricht senden" data-en="Send message">
+          Nachricht senden
+        </button>
     </form>
+
   </section>
 
   <!-- IMPRESSUM -->
