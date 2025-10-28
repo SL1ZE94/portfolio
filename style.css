@@ -321,3 +321,22 @@ body {
     display: block;
   }
 }
+.logo {
+  display: flex;
+  align-items: center;
+  gap: 10px; /* Abstand zwischen Text und Bild */
+}
+
+.logo-img {
+  height: 2.1em; /* etwas größer als Text, wirkt ausgewogen */
+  width: auto;
+  margin-top: 1px;
+  filter: drop-shadow(0 0 10px rgba(25, 225, 255, 0.8));
+  transition: transform 0.3s ease, filter 0.3s ease;
+}
+
+.logo-img:hover {
+  transform: scale(1.08);
+  filter: drop-shadow(0 0 16px rgba(25, 225, 255, 1));
+}
+
