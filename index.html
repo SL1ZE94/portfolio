@@ -10,16 +10,23 @@
   <meta name="keywords" content="Webdesign, Frontend Development, HTML, CSS, JavaScript, Freelancer, Responsive, Portfolio, Armin Catakovic">
   <meta name="author" content="Armin Catakovic">
   <meta name="robots" content="index, follow">
+  <link rel="canonical" href="https://sl1ze94.github.io/portfolio/">
 
   <!-- ✅ Open Graph (für Google & Social Media) -->
   <meta property="og:title" content="Armin Catakovic – Webdesign & Frontend Development">
   <meta property="og:description" content="Professionelles Webdesign, Frontend Development & Responsive Design.">
-  <meta property="og:image" content="https://sl1ze94.github.io/portfolio/favicon.png">
+  <meta property="og:image" content="https://sl1ze94.github.io/portfolio/favicon.png?v=3">
   <meta property="og:url" content="https://sl1ze94.github.io/portfolio/">
   <meta name="theme-color" content="#0a0f12">
 
-  <!-- ✅ Favicon -->
-  <link rel="icon" type="image/png" href="favicon.png" />
+  <!-- ✅ Favicon (bulletproof) -->
+  <!-- PNG (empfohlen) -->
+  <link rel="icon" type="image/png" sizes="32x32" href="./favicon.png?v=3">
+  <link rel="icon" type="image/png" sizes="16x16" href="./favicon.png?v=3">
+  <!-- Apple Touch Icon -->
+  <link rel="apple-touch-icon" href="./favicon.png?v=3">
+  <!-- .ico Fallback (optional, falls vorhanden) -->
+  <link rel="shortcut icon" href="./favicon.ico?v=3">
 
   <link rel="stylesheet" href="style.css" />
 </head>
@@ -29,31 +36,26 @@
   <header class="navbar">
     <a href="#home" class="logo" id="logo">Armin<span>Web</span></a>
 
-    
-<!-- Sprach-Umschalter -->
-<div class="lang-toggle">
-  <input type="checkbox" id="langSwitch" />
-  <label for="langSwitch" class="toggle-label">
-    <span class="lang-left">DE</span>
-    <span class="lang-right">EN</span>
-    <span class="toggle-switch"></span>
-  </label>
-</div>
-
-
-
+    <!-- Sprach-Umschalter -->
+    <div class="lang-toggle">
+      <input type="checkbox" id="langSwitch" />
+      <label for="langSwitch" class="toggle-label">
+        <span class="lang-left">DE</span>
+        <span class="lang-right">EN</span>
+        <span class="toggle-switch"></span>
+      </label>
+    </div>
 
     <button class="menu-toggle" id="menu-toggle">☰</button>
 
     <nav>
-    <ul class="nav-links" id="nav-links">
-  <li><a href="#about" class="tr" data-de="Über mich" data-en="About">Über mich</a></li>
-  <li><a href="#projects" class="tr" data-de="Projekte" data-en="Projects">Projekte</a></li>
-  <li><a href="#contact" class="tr" data-de="Kontakt" data-en="Contact">Kontakt</a></li>
-  <li><a href="#impressum">Impressum</a></li>
-  <li><a href="#datenschutz">Datenschutz</a></li>
-</ul>
-
+      <ul class="nav-links" id="nav-links">
+        <li><a href="#about" class="tr" data-de="Über mich" data-en="About">Über mich</a></li>
+        <li><a href="#projects" class="tr" data-de="Projekte" data-en="Projects">Projekte</a></li>
+        <li><a href="#contact" class="tr" data-de="Kontakt" data-en="Contact">Kontakt</a></li>
+        <li><a href="#impressum">Impressum</a></li>
+        <li><a href="#datenschutz">Datenschutz</a></li>
+      </ul>
     </nav>
   </header>
 
@@ -62,9 +64,9 @@
     <h1 class="tr" data-de="Ich entwickle" data-en="I build">Ich entwickle</h1>
     <span class="typing"></span>
     <p class="tr"
-      data-de="Professionelle, performante und ansprechende Websites – individuell, zuverlässig und modern gestaltet."
-      data-en="Professional, high-performance and engaging websites – tailored, reliable and modern.">
-      Professionelle, performante und ansprechende Websites – individuell, zuverlässig und modern gestaltet.
+       data-de="Professionelle, performante und ansprechende Websites – individuell, zuverlässig und modern gestaltet."
+       data-en="Professional, high-performance and engaging websites – tailored, reliable and modern.">
+       Professionelle, performante und ansprechende Websites – individuell, zuverlässig und modern gestaltet.
     </p>
     <a href="#projects" class="btn cta tr" data-de="Meine Projekte ansehen" data-en="View my projects">Meine Projekte ansehen</a>
   </section>
@@ -73,14 +75,14 @@
   <section id="about" class="section reveal">
     <h2 class="tr" data-de="Über mich" data-en="About me">Über mich</h2>
     <p class="tr"
-      data-de="Mein Name ist Armin Catakovic und ich bin leidenschaftlicher Frontend-Entwickler mit Fokus auf moderne, klare und funktionale Weblösungen."
-      data-en="My name is Armin Catakovic, a passionate Frontend Developer focused on modern, clean, and functional web solutions.">
-      Mein Name ist Armin Catakovic und ich bin leidenschaftlicher Frontend-Entwickler mit Fokus auf moderne, klare und funktionale Weblösungen.
+       data-de="Mein Name ist Armin Catakovic und ich bin leidenschaftlicher Frontend-Entwickler mit Fokus auf moderne, klare und funktionale Weblösungen."
+       data-en="My name is Armin Catakovic, a passionate Frontend Developer focused on modern, clean, and functional web solutions.">
+       Mein Name ist Armin Catakovic und ich bin leidenschaftlicher Frontend-Entwickler mit Fokus auf moderne, klare und funktionale Weblösungen.
     </p>
     <p class="tr"
-      data-de="Ich lege Wert auf Zuverlässigkeit, sauberen Code und digitale Erlebnisse, die auf jedem Gerät überzeugen."
-      data-en="I value reliability, clean code, and digital experiences that work beautifully on every device.">
-      Ich lege Wert auf Zuverlässigkeit, sauberen Code und digitale Erlebnisse, die auf jedem Gerät überzeugen.
+       data-de="Ich lege Wert auf Zuverlässigkeit, sauberen Code und digitale Erlebnisse, die auf jedem Gerät überzeugen."
+       data-en="I value reliability, clean code, and digital experiences that work beautifully on every device.">
+       Ich lege Wert auf Zuverlässigkeit, sauberen Code und digitale Erlebnisse, die auf jedem Gerät überzeugen.
     </p>
 
     <ul class="highlights">
@@ -97,19 +99,19 @@
       <article class="project-card">
         <h3>WebStudio Landing Page</h3>
         <p>Modernes Design mit klarer Struktur, Animationen und schneller Performance.</p>
-        <a href="https://github.com/sl1ze94" class="btn small" target="_blank">GitHub</a>
+        <a href="https://github.com/sl1ze94" class="btn small" target="_blank" rel="noopener">GitHub</a>
       </article>
 
       <article class="project-card">
         <h3>Portfolio Website</h3>
         <p>Diese Website – mobiloptimiert, dunkel gestaltet, mit sanften Animationen und Burger-Menü.</p>
-        <a href="https://github.com/sl1ze94/portfolio" class="btn small" target="_blank">Repository</a>
+        <a href="https://github.com/sl1ze94/portfolio" class="btn small" target="_blank" rel="noopener">Repository</a>
       </article>
 
       <article class="project-card">
         <h3>Responsive Business Page</h3>
         <p>Eine Business-Webseite mit Dark Mode, Formular und flexibler Struktur.</p>
-        <a href="https://github.com/sl1ze94" class="btn small" target="_blank">GitHub</a>
+        <a href="https://github.com/sl1ze94" class="btn small" target="_blank" rel="noopener">GitHub</a>
       </article>
     </div>
   </section>
@@ -118,9 +120,9 @@
   <section id="contact" class="section reveal">
     <h2 class="tr" data-de="Kontakt" data-en="Contact">Kontakt</h2>
     <p class="tr"
-      data-de="Du möchtest ein Projekt umsetzen oder über eine Zusammenarbeit sprechen? Schreib mir gern eine Nachricht."
-      data-en="Want to discuss a project or collaboration? Feel free to send me a message.">
-      Du möchtest ein Projekt umsetzen oder über eine Zusammenarbeit sprechen? Schreib mir gern eine Nachricht.
+       data-de="Du möchtest ein Projekt umsetzen oder über eine Zusammenarbeit sprechen? Schreib mir gern eine Nachricht."
+       data-en="Want to discuss a project or collaboration? Feel free to send me a message.">
+       Du möchtest ein Projekt umsetzen oder über eine Zusammenarbeit sprechen? Schreib mir gern eine Nachricht.
     </p>
 
     <form class="contact-form" onsubmit="event.preventDefault(); alert('Danke für deine Nachricht!');">
@@ -172,7 +174,7 @@
   <footer class="footer">
     <p>© 2025 Armin Catakovic – Webdesign & Frontend Development</p>
     <div class="socials">
-      <a href="https://github.com/sl1ze94" target="_blank" class="github-link">
+      <a href="https://github.com/sl1ze94" target="_blank" rel="noopener" class="github-link">
         <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/github/github-original.svg" alt="GitHub">
       </a>
     </div>
