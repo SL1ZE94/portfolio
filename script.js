@@ -117,3 +117,29 @@ document.addEventListener("DOMContentLoaded", () => {
     typeEffect();
   }
 });
+(function() {
+  emailjs.init("g1ZjtbHDQ1h1NDlCr"); // Public Key
+})();
+
+document.getElementById("contact-form").addEventListener("submit", function(event) {
+  event.preventDefault();
+
+  // Optional: Button während des Sendens deaktivieren
+  const btn = this.querySelector("button");
+  btn.disabled = true;
+  btn.textContent = "Wird gesendet...";
+
+  emailjs.sendForm("service_osbho2j", "template_w2z30ap", this)
+    .then(() => {
+      alert("✅ Danke für deine Nachricht! Ich melde mich bald.");
+      this.reset();
+      btn.disabled = false;
+      btn.textContent = "Nachricht senden";
+    })
+    .catch((error) => {
+      console.error("❌ Fehler beim Senden:", error);
+      alert("❌ Nachricht konnte nicht gesendet werden. Bitte versuche es später erneut.");
+      btn.disabled = false;
+      btn.textContent = "Nachricht senden";
+    });
+});
