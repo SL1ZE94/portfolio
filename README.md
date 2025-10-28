@@ -19,7 +19,7 @@ It combines clean structure, modern design and smooth user interaction – fully
 ## 🖼️ Preview
 ![Portfolio Screenshot](https://github.com/sl1ze94/portfolio/raw/main/preview.png)
 
-*(You can replace this with your own screenshot later, e.g. `preview.png` in your repo root.)*
+
 
 ---
 
